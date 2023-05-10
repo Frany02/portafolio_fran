@@ -1,9 +1,9 @@
 import { createStore } from 'vuex'
-import { Cursos } from "@/services/cursos.js";
+// import { Cursos } from "@/services/cursos.js";
 
 export default createStore({
   state: {
-  cursos: Cursos.getAllCursos(),
+  // cursos: Cursos.getAllCursos(),
   },
   getters: {
 

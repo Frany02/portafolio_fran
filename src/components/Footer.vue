@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <img src="../assets/dancelogo.png" alt="" width="100">
+        <img src="../assets/logo.png" alt="" width="100">
         <div class="nombres d-flex justify-content-center">
         </div>
     </footer>

@@ -1,8 +1,8 @@
 <template> 
   <div class="navbar">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"><img src="../assets/dancelogo.png" alt="" width="100"></a>
+      <!-- <div class="container-fluid"> -->
+        <a class="navbar-brand" href="#"><img src="../assets/logo.png" alt="" width="100"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,7 +18,7 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form> -->
         </div>
-      </div>
+      <!-- </div> -->
     </nav>
   </div>
 
@@ -61,9 +61,10 @@
   list-style-type: none;
   background-color: #9f5edc;
   color: azure;
-  padding: .5rem 2rem;
+  /* padding: .5rem 2rem; */
   font-size: 16px;
-  margin: 0%;
+  /* margin: 0%; */
+
   font-family: 'Montserrat', sans-serif;
 }
 .link-nav{

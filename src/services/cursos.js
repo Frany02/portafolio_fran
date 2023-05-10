@@ -8,7 +8,7 @@ export class Cursos {
       cupos: 30,
       descripcion: "jsjhsjdjhsjhsdjhsufytdsifeu",
       valor: 15000,
-      imagen: "https://falabella.scene7.com/is/image/Falabella/gsc_114245689_945294_1?wid=800&hei=800&qlt=70",
+      imagen: require('@/assets/presencial.jpg'),
     },
     {
       id: "A02",
@@ -18,7 +18,7 @@ export class Cursos {
       cupos: 20,
       descripcion: "Lorem ipsum dolor sit aet, consectetur adipiscing elit. Mauris eu sapien vitae risus bibendum euismod.",
       valor: 12000,
-      imagen: "https://falabella.scene7.com/is/image/Falabella/gsc_114245689_945294_1?wid=800&hei=800&qlt=70",
+      imagen: require('@/assets/dancelogo.png'),
     },
   ];
 

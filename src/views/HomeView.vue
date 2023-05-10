@@ -1,7 +1,7 @@
 <template>
   <section class="hero">
-    <video ref="videoplayer" class="hero__video" autoplay loop>
-      <source src="../assets/befo.mp4" type="video/mp4" >
+    <video ref="videoplayer" class="hero__video" autoplay loop preload="auto" playsinline>
+      <source src="../assets/befo.mp4" type="video/mp4">
     </video>
     <div class="hero__content">
       <h1 class="hero__title"></h1>
@@ -22,27 +22,37 @@
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
   name: 'HomeView',
   components: {
-    // HelloWorld
+ 
+  },
+  mounted() {
+    this.$refs.videoplayer.addEventListener('loadedmetadata', this.playVideo);
+  },
+  methods: {
+    playVideo() {
+      this.$refs.videoplayer.play();
+    }
   }
-  }
-
+}
 </script>
 
 <style scoped>
   .hero {
     width: 100vw;
+    max-height: 700px;
     position: relative;
   }
   .hero__video{
-    max-height: 80vh;
-    width: 100vw;
+    /* height: 80vh; */
+    max-height: inherit;
+    /* height: 100%; */
+    width: 100%;
     object-fit: cover;
-    position: relative;
+    /* position: relative; */
   }
 .hero__content{
     position: absolute;
