@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <router-view />
-  <Footer/>
+  <Footer />
 
 </template>
 <script>
@@ -18,7 +18,8 @@
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+   font-family: Avenir, Helvetica, Arial, sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -26,7 +27,7 @@
 }
 
 nav {
-  padding: 30px;
+  padding: 30px; 
 }
 
 nav a {
@@ -34,7 +35,7 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
-  color: #46056c;
-}
+ nav a.router-link-exact-active {
+color: #46056c;
+}  
 </style>

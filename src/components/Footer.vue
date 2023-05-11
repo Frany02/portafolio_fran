@@ -12,12 +12,13 @@
     }
     </script>
     
-    <style>
+    <style scoped>
     footer {
     background-color: #9f5edc;
     /* padding: 10px; */
     text-align: center;
     font-size: 14px;
     color: azure;
+    height: 10rem;
     }
     </style>

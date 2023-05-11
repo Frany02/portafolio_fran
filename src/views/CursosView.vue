@@ -3,7 +3,9 @@
     <div v-if="cargando" id="carga">
       <pulse-loader :loading="loading" :color="color" :size="size"></pulse-loader>
     </div>
+    
     <div class="container-fluid p-0" v-else>
+      
       <div id="carrusel" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
           <li data-bs-target="#carrusel" v-for="(curso, index) in cursos" :key="index" :data-bs-slide-to="index" :class="{ active: index === 0 }"></li>
@@ -17,8 +19,11 @@
               <p>Horarios: {{ curso.horarios }}</p>
               <p>Cupos: {{ curso.cupos }}</p>
               <p>{{ curso.descripcion }}</p>
-              <p>Valor: ${{ curso.valor }}</p>
-            </div>
+              <p class="mb-3"> Valor:  {{new Intl.NumberFormat('es-CL', {currency: 'CLP', style: 'currency' }).format(curso.valor)}}</p>
+              <!-- Botón para abrir el modal -->
+              <button class="btn" data-bs-toggle="modal" data-bs-target="#formularioModal">Inscribirse</button>
+            
+            </div> 
           </div>
         </div>
         <a class="carousel-control-prev" href="#carrusel" role="button" data-bs-slide="prev">
@@ -34,42 +39,55 @@
   </div>
 
 
-<!-- 
-  <div id="carouselExampleDark" class="carousel carousel-dark slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div v-for="curso in cursos" class="carousel-item active" data-bs-interval="10000">
-      <img :src="curso.imagen" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>{{ curso.nombre }}</h5>
-        <p>{{ curso.dias }}</p>
-        <p>{{ curso.horarios }}</p>
-        <p>{{ curso.cupos }}</p>
-        <p>{{ curso.descripcion }}</p>
-        <p>{{ curso.valor }}</p>
+  <div class="modal fade" id="formularioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Formulario de Inscripción</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input v-model="nombre" type="text" class="form-control" id="nombre" required>
+          </div>
+          <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido</label>
+            <input v-model="apellido" type="text" class="form-control" id="apellido" required>
+          </div>
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input v-model="fechaNacimiento" type="date" class="form-control" id="fechaNacimiento" required>
+          </div>
+          <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono</label>
+            <input v-model="telefono" type="tel" class="form-control" id="telefono" required>
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo</label>
+            <input v-model="correo" type="email" class="form-control" id="correo" required>
+          </div>
+          <div class="mb-3">
+            <label for="comentario" class="form-label">Comentario</label>
+            <textarea v-model="comentario" class="form-control" id="comentario" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button @click.prevent="validacion()"  type="button" class="btn btn-primary">Enviar</button>
       </div>
     </div>
-    </div>
+  </div>
+</div>
   
-  
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div> -->
 </template>
 
 <script>
 import { mapState } from 'vuex';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
+import Swal from 'sweetalert2';
 import { Cursos } from '@/services/cursos.js';
 
 export default {
@@ -80,7 +98,13 @@ export default {
   data() {
     return {
       cursos: [],
-      cargando: false
+      cargando: false,
+      nombre: '',
+      apellido: '',
+      fechaNacimiento: '',
+      telefono: '',
+      correo: '',
+      comentario: '',
     };
   },
   computed: {
@@ -95,8 +119,86 @@ export default {
     } catch (error) {
       console.error(error);
     }
+  },
+  methods: {
+    validacion() {
+      // Validar campos
+      if (!this.nombre) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu nombre.',
+    });
+        return;
+      } else if (!this.apellido) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu apellido.',
+    });
+        return;
+      } else if (!this.fechaNacimiento) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu fecha de nacimiento.',
+    });
+    return;
+      }else if (!this.telefono) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu número de telefono.',
+    });
+        return;
+    }else if (!this.correo) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu correo.',
+    });
+          // Validar formato de correo
+        } else if ((!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.correo))) {
+        // Swal("Error", "El correo electrónico no es válido.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingrese un correo electrónico válido.',
+    });
+        return;
+    
+        return;
+      }else if (!this.comentario) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu comentario.',
+    });
+        return;
+    }
+    else {  
+      Swal.fire({
+      icon: 'success',
+      title: 'Éxito',
+      text: '¡Tus datos fueron enviados correctamente!',
+    })
+    }
   }
-};
+}
+  }
+
+// ---------
+// const botonOkSA = document.querySelector(".swal2-confirm");
+// botonOkSA.addEventListener("click", ()=>{
+//   console.log("click boton ok");
+// })
+
 </script>
 
 <style scoped>
@@ -110,6 +212,8 @@ export default {
   padding: 10px;
   color: #e7dcdc;
   margin-bottom: 10px;
+  font-family: 'Comfortaa', cursive;
+
 }
 
 .carousel-control-prev,
@@ -135,5 +239,48 @@ export default {
   height: 10px;
   width: 10px;
   margin: 0 5px
+}
+
+.btn {
+  background-color: initial;
+  background-image: linear-gradient(#8614f8 0, #760be0 100%);
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgba(245, 244, 247, .25) 0 1px 1px inset;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Comfortaa', cursive;
+  font-size: 16px;
+  font-weight: 500;
+  height: 50px;
+  line-height: 50px;
+  margin-left: -4px;
+  outline: 0;
+  text-align: center;
+  transition: all .3s cubic-bezier(.05, .03, .35, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: bottom;
+  width: 190px;
+}
+
+.btn:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 1000px) {
+  .btn {
+    font-size: 14px;
+    height: 55px;
+    line-height: 55px;
+    width: 150px;
+  }
+}
+
+.modal {
+  font-family: 'Comfortaa', cursive;
+  color: #2a2a2a;
 }
 </style>
