@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import QuienesSomosView from '../views/QuienesSomosView.vue'
+import QuienesSomos from '../views/QuienesSomos.vue'
 import CursosView from '../views/CursosView.vue'
 import ContactoView from '../views/ContactoView.vue'
+import NotFound from '../views/NotFound.vue'
 
 
 
@@ -15,7 +16,7 @@ const routes = [
   {
     path: '/quienessomos',
     name: 'quienessomos',
-    component: QuienesSomosView
+    component: QuienesSomos
   },
   {
     path: '/cursos',
@@ -27,6 +28,11 @@ const routes = [
     name: 'contacto',
     component: ContactoView
   },
+  { 
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFound 
+    }
   // {
   //   path: '/cursos',
   //   name: 'cursos',

@@ -73,18 +73,10 @@
 
 
 export default {
-  name: 'HomeView',
+  name: 'ContactoView',
   components: {
  
   },
-  mounted() {
-    this.$refs.videoplayer.addEventListener('loadedmetadata', this.playVideo);
-  },
-  methods: {
-    playVideo() {
-      this.$refs.videoplayer.play();
-    }
-  }
 }
 </script>
 
