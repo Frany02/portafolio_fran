@@ -29,14 +29,14 @@ export default {
   components: {
  
   },
-  // mounted() {
-  //   this.$refs.videoplayer.addEventListener('loadedmetadata', this.playVideo);
-  // },
-  // methods: {
-  //   playVideo() {
-  //     this.$refs.videoplayer.play();
-  //   }
-  // }
+  mounted() {
+    this.$refs.videoplayer.addEventListener('loadedmetadata', this.playVideo);
+  },
+  methods: {
+    playVideo() {
+      this.$refs.videoplayer.play();
+    }
+  }
 }
 </script>
 
