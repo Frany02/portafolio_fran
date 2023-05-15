@@ -1,24 +1,5 @@
 <template>
-  <!-- <section class="hero">
-    <video ref="videoplayer" class="hero__video" autoplay loop preload="auto" playsinline>
-      <source src="../assets/befo.mp4" type="video/mp4">
-    </video>
-    <div class="hero__content">
-      <h1 class="hero__title"></h1>
-      <p class="hero__text"></p>
-      <a class="hero__link"><p></p></a> 
-    </div>
-  </section>-->
 
-  <!-- <section id="quienessomos" class="container">
-    <div class="row">
-      <h2 class="col">QUIENES SOMOS</h2>
-    </div>
-    
-    <div class="seccion__content row">
-      <p class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil neque asperiores provident placeat excepturi possimus architecto incidunt quo consequuntur quia.</p>
-    </div>
-  </section> -->
       <!-- Quienes somos -->
       <section class="seccion-q">
       <div class="container">
@@ -36,7 +17,7 @@
         <div>
           <h1>Certificaciones</h1>
           </div>
-          <img src="../assets/3.jpeg" alt="" width="500" />
+          <img src="../assets/3.jpeg" alt="" width="500" style="max-width:100%;"/>
       </div>
     </section>
 </template>
@@ -53,7 +34,7 @@ export default {
 </script>
 
 <style scoped>
-  @media screen and (min-width: 768px) {
+    @media screen and (min-width: 768px) {
     .hero__title{
       font-size: 64px;
     }
@@ -66,7 +47,7 @@ export default {
 .seccion-q{
   padding-top: 5rem;
   background-color: #ffffff;
-  color: #1f1f1f;
+  color: #1f1f1f; 
   padding-bottom: 5rem;
   font-family: 'Comfortaa', cursive;
 }

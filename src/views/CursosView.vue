@@ -125,7 +125,6 @@ export default {
     validacion() {
       // Validar campos
       if (!this.nombre) {
-        // Swal("Error", "Por favor, completa todos los campos.", "error");
       Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -133,7 +132,6 @@ export default {
     });
         return;
       } else if (!this.apellido) {
-        // Swal("Error", "Por favor, completa todos los campos.", "error");
       Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -141,7 +139,6 @@ export default {
     });
         return;
       } else if (!this.fechaNacimiento) {
-        // Swal("Error", "Por favor, completa todos los campos.", "error");
       Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -149,7 +146,6 @@ export default {
     });
     return;
       }else if (!this.telefono) {
-        // Swal("Error", "Por favor, completa todos los campos.", "error");
       Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -157,7 +153,6 @@ export default {
     });
         return;
     }else if (!this.correo) {
-        // Swal("Error", "Por favor, completa todos los campos.", "error");
       Swal.fire({
       icon: 'error',
       title: 'Error',
