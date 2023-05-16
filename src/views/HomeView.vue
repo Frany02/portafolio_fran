@@ -41,18 +41,33 @@ export default {
 </script>
 
 <style scoped>
+body {
+  margin: 0;
+ 
+}
   .hero {
-    width: 100vw;
+    /* background-color: #9f5edc; */
+    /* width: 100vw;
     max-height: 700px;
+    position: relative; */
+    width: 100%;
     position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 (9 dividido por 16, multiplicado por 100) */
   }
+  
   .hero__video{
     /* height: 80vh; */
-    max-height: inherit;
+    /* max-height: inherit; */
     /* height: 100%; */
-    width: 100%;
-    object-fit: cover;
+    /* width: 100%;
+    object-fit: cover; */
     /* position: relative; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
   }
 .hero__content{
     position: absolute;
@@ -90,10 +105,13 @@ export default {
     .hero__title{
       font-size: 64px;
     }
+
   }
   @media screen and (min-width: 992px) {
+
    .hero__title{
       font-size: 72px;
     }
   }
+  
 </style>

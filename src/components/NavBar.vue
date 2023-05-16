@@ -12,6 +12,7 @@
           <router-link class="link-nav px-3" to="/">Inicio</router-link>
           <router-link class="link-nav px-3" to="/quienessomos">Quienes Somos</router-link>
           <router-link class="link-nav px-3" to="/cursos">Cursos</router-link>
+          <router-link class="link-nav px-3" to="/galeria">Galeria</router-link>
           <router-link class="link-nav px-3" to="/contacto">Contacto</router-link>
         </ul>
         <!-- <form class="d-flex" role="search">

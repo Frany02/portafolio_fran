@@ -63,7 +63,7 @@
           </div>
           <div class="mb-3">
             <label for="telefono" class="form-label">Teléfono</label>
-            <input v-model="telefono" type="tel" class="form-control" id="telefono" required>
+            <input v-model="telefono" type="tel" class="form-control" id="telefono" placeholder="+56 997343578" required>
           </div>
           <div class="mb-3">
             <label for="correo" class="form-label">Correo</label>
@@ -77,7 +77,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button @click.prevent="validacion()"  type="button" class="btn btn-primary">Enviar</button>
+        <button @click.prevent="validacion()"  type="submit" class="btn btn-primary">Enviar</button>
       </div>
     </div>
 </div>
@@ -100,7 +100,6 @@ export default {
     return {
       cursos: [],
       cargando: false,
-      isModalOpen: false,
       nombre: "",
       apellido: "",
       fechaNacimiento: "",
@@ -130,7 +129,15 @@ export default {
       title: 'Error',
       text: 'Por favor, ingresa tu nombre.',
     });
-        return;
+    return;
+  } else if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(this.nombre)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa un nombre válido (solo letras).',
+    });
+    return;
+        
       } else if (!this.apellido) {
       Swal.fire({
       icon: 'error',
@@ -138,6 +145,13 @@ export default {
       text: 'Por favor, ingresa tu apellido.',
     });
         return;
+    } else if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(this.apellido)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa un apellido válido (solo letras).',
+    });
+    return;
       } else if (!this.fechaNacimiento) {
       Swal.fire({
       icon: 'error',
@@ -145,14 +159,54 @@ export default {
       text: 'Por favor, ingresa tu fecha de nacimiento.',
     });
     return;
-      }else if (!this.telefono) {
+  } else if (!this.fechaNacimiento) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu fecha de nacimiento.',
+    });
+    return;
+  } else {
+    const today = new Date();
+    const minDate = new Date();
+    minDate.setFullYear(minDate.getFullYear() - 15); // 15 años atrás
+    const fechaNacimiento = new Date(this.fechaNacimiento);
+
+    if (fechaNacimiento > today) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'La fecha de nacimiento no puede ser mayor a la fecha actual.',
+      });
+      return;
+    } else if (fechaNacimiento > minDate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Debes tener al menos 15 años para inscribirte.',
+      });
+      return;
+    }
+  }
+
+       if (!this.telefono) {
       Swal.fire({
       icon: 'error',
       title: 'Error',
       text: 'Por favor, ingresa tu número de telefono.',
     });
-        return;
-    }else if (!this.correo) {
+    return;
+
+      // Validar número de teléfono
+  } else if ((!/^\+\d{1,3}\s?\d{9}$/.test(this.telefono))) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa un número de teléfono válido.',
+    });
+    return;
+    
+  }else if (!this.correo) {
       Swal.fire({
       icon: 'error',
       title: 'Error',
@@ -183,12 +237,13 @@ export default {
       icon: 'success',
       title: 'Éxito',
       text: '¡Tus datos fueron enviados correctamente!',
-    });
-    }   
+        });
+      }
+    },
   }
 }
-}
- 
+
+    
 </script>
 
 <style scoped>

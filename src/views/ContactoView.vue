@@ -118,7 +118,7 @@ export default {
 .form-control, 
 textarea {
   max-width: 400px;
-  max-height: 200px;
+  max-height: 400px;
   background-color: #d2afce;
   color: #242424;
   letter-spacing: 1px;
