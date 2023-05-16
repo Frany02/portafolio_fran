@@ -5,6 +5,7 @@ import CursosView from '../views/CursosView.vue'
 import GaleriaView from '../views/GaleriaView.vue'
 import ContactoView from '../views/ContactoView.vue'
 import NotFound from '../views/NotFound.vue'
+import DetalleImagen from '../components/DetalleImagen.vue'
 
 
 
@@ -24,11 +25,40 @@ const routes = [
     name: 'cursos',
     component: CursosView
   },
+  // {
+  //   path: '/galeria',
+  //   name: 'galeria',
+  //   component: GaleriaView
+  // },
+  // {
+  //   path: '/galeria/:id',
+  //   name: 'detalle-imagen',
+  //   component: DetalleImagen
+  // },
   {
-    path: '/galeria',
-    name: 'galeria',
-    component: GaleriaView
-  },
+  path: '/galeria',
+  name: 'galeria',
+  component: GaleriaView,
+  children: [
+    {
+      path: ':id',
+      name: 'detalleimagen',
+      component: DetalleImagen
+    }
+  ]
+},
+  // {
+  //   path: '/galeria',
+  //   redirect: '/detalleimagen',
+  //   children: [
+  //     {
+  //       path: '/galeria/:id',
+  //       name: 'detalleimagen',
+  //       component:DetalleImagen,
+  //       props: true
+  //     },
+  //   ]
+  // },
   {
     path: '/contacto',
     name: 'contacto',
