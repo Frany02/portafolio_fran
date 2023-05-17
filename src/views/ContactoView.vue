@@ -76,13 +76,13 @@
       <div class="form-container">
         <form id="contact-form" class="form-horizontal" role="form">
           <div class="form-group">
-            <input type="text" class="form-control" id="name" placeholder="Nombre" name="name" v-model="name" required>
+            <input v-model="nombre" type="text" class="form-control" id="name" placeholder="Nombre" name="name" required>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="email" placeholder="Email" name="email" v-model="email" required>
+            <input v-model="correo" type="email" class="form-control" id="email" placeholder="Email" name="email" required>
           </div>
-          <textarea class="form-control" rows="10" placeholder="Mensaje" name="message" v-model="message" required></textarea>
-          <button class="btn send-button" id="submit" type="submit" value="SEND" @click="submitForm">
+          <textarea  v-model="mensaje" class="form-control" rows="10" placeholder="Mensaje" name="message" required></textarea>
+          <button class="btn send-button" id="submit" type="submit" value="Enviar" @click.prevent="validarForm()">
             <div class="alt-send-button">
               <i class="fa fa-paper-plane"></i><span class="send-text">Enviar</span>
             </div>
@@ -108,14 +108,74 @@
 </template>
 
 <script>
-
+import Swal from 'sweetalert2';
 
 export default {
   name: 'ContactoView',
   components: {
  
   },
+  data() {
+    return {
+      nombre: '',
+      correo: '',
+      mensaje: '',
+    }
+  },
+  methods: {
+    validarForm() {
+      // Validar campos
+      if (!this.nombre) {
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu nombre.',
+    });
+    return;
+  } else if (!/^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/.test(this.nombre)) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa un nombre válido (solo letras).',
+    });
+    return;
+  }else if (!this.correo) {
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu correo.',
+    });
+    return;
+          // Validar formato de correo
+        } else if ((!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(this.correo))) {
+        // Swal("Error", "El correo electrónico no es válido.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingrese un correo electrónico válido.',
+    });
+        return;
+
+      }else if (!this.mensaje) {
+        // Swal("Error", "Por favor, completa todos los campos.", "error");
+      Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, ingresa tu comentario.',
+    });
+        return;
+    }
+    else {  
+      Swal.fire({
+      icon: 'success',
+      title: 'Éxito',
+      text: '¡Tus datos fueron enviados correctamente!',
+        });
+      }
+    },
+  }
 }
+
 </script>
 
 <style scoped>
