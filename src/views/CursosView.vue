@@ -238,6 +238,7 @@ export default {
       title: 'Éxito',
       text: '¡Tus datos fueron enviados correctamente!',
         });
+        return;
       }
     },
   }
@@ -258,20 +259,6 @@ export default {
   color: #e7dcdc;
   margin-bottom: 10px;
   font-family: 'Comfortaa', cursive;
-}
-.carousel-control-prev,
-.carousel-control-next {
-  /* width: 5%;  */
-}
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  /* height: 100%;
-  width: 100%;
-  background-size: cover;
-  background-color: rgb(73, 7, 91); */
-}
-.carousel-indicators {
-  /* bottom: -40px; */
 }
 .carousel-indicators li {
   background-color: #fff;

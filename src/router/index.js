@@ -43,22 +43,11 @@ const routes = [
     {
       path: ':id',
       name: 'detalleimagen',
-      component: DetalleImagen
+      component: DetalleImagen,
+      props: true
     }
   ]
 },
-  // {
-  //   path: '/galeria',
-  //   redirect: '/detalleimagen',
-  //   children: [
-  //     {
-  //       path: '/galeria/:id',
-  //       name: 'detalleimagen',
-  //       component:DetalleImagen,
-  //       props: true
-  //     },
-  //   ]
-  // },
   {
     path: '/contacto',
     name: 'contacto',
@@ -69,19 +58,6 @@ const routes = [
     name: 'NotFound',
     component: NotFound 
     }
-  // {
-  //   path: '/cursos',
-  //   name: 'cursos',
-  //   component: CursosView
-  // }
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
 ]
 
 const router = createRouter({

@@ -29,14 +29,14 @@ export default {
   components: {
  
   },
-  // mounted() {
-  //   this.$refs.videoplayer.addEventListener('loadedmetadata', this.playVideo);
-  // },
-  // methods: {
-  //   playVideo() {
-  //     this.$refs.videoplayer.play();
-  //   }
-  // }
+  mounted() {
+    this.$refs.videoplayer.addEventListener('loadedmetadata', this.playVideo);
+  },
+  methods: {
+    playVideo() {
+      this.$refs.videoplayer.play();
+    }
+  }
 }
 </script>
 
@@ -46,22 +46,12 @@ body {
  
 }
   .hero {
-    /* background-color: #9f5edc; */
-    /* width: 100vw;
-    max-height: 700px;
-    position: relative; */
     width: 100%;
     position: relative;
     padding-bottom: 56.25%; /* Relación de aspecto 16:9 (9 dividido por 16, multiplicado por 100) */
   }
   
   .hero__video{
-    /* height: 80vh; */
-    /* max-height: inherit; */
-    /* height: 100%; */
-    /* width: 100%;
-    object-fit: cover; */
-    /* position: relative; */
     position: absolute;
     width: 100%;
     height: 100%;
