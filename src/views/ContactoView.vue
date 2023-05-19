@@ -109,12 +109,14 @@ export default {
 
 <style scoped>
 @import '~@fortawesome/fontawesome-free/css/all.css';
-
-body {
-    margin: 0;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
 #contact {
-  width: 100%;
+  /* width: 100%; */
   height: 100%;
   font-family: 'Comfortaa', cursive;
   padding: 20px;
@@ -133,20 +135,24 @@ body {
 }
 
 .contact-wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 20px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 50px;
   position: relative;
   max-width: 840px;
 }
 
 .form-horizontal {
-  float: left;
+  /* float: left; */
   max-width: 400px;
   font-family: 'Lato';
   font-weight: 400;
+  /* width: 100%; */
 }
 
 .form-control,
@@ -155,20 +161,21 @@ textarea {
   max-height: 400px;
   background-color: #d2afce;
   color: #242424;
-  width: 100%;
+  /* width: 100%; */
  box-sizing: border-box;
+ margin-bottom: 10px;
 }
 
 .send-button {
   margin-top: 15px;
   height: 34px;
-  width: 400px;
+  width: 100%;
   overflow: hidden;
   transition: all .2s ease-in-out;
 }
 
 .alt-send-button {
-  width: 400px;
+  max-width: 400px;
   height: 34px;
   transition: all .2s ease-in-out;
 }
@@ -285,8 +292,9 @@ color: #000;
 
 @media screen and (max-width: 850px) {
 .contact-wrapper {
-display: flex;
-flex-direction: column;
+  grid-template-columns: repeat(1, 1fr);
+/* display: flex; */
+/* flex-direction: column; */
 }
 
 .direct-contact-container,
@@ -322,7 +330,7 @@ margin: 0 auto;
 .form-control,
 textarea {
 font-family: 'Comfortaa', cursive;
-margin: 0 auto;
+margin-bottom: 10px;
 width: 100%;
 box-sizing: border-box;
 }
@@ -354,6 +362,9 @@ width: 55px;
 height: 55px;
 line-height: 55px;
 }
+.contacr-wrapper {
+  grid-template-columns: repeat(1, 1fr);
+}
 }
 
 @media screen and (max-width: 410px) {
@@ -368,10 +379,10 @@ color: #242424;
 }
 
 @media screen and (max-width: 850px) {
-  .contact-wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
+  /* .contact-wrapper {
+     flex-direction: column; 
+     align-items: center; 
+  } */
 
   .form-container {
     width: 100%;

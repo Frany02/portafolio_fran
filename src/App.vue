@@ -2,7 +2,6 @@
   <NavBar />
   <router-view />
   <Footer />
-
 </template>
 <script>
   import NavBar from "@/components/NavBar.vue"
