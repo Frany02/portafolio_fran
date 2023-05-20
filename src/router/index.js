@@ -25,16 +25,7 @@ const routes = [
     name: 'cursos',
     component: CursosView
   },
-  // {
-  //   path: '/galeria',
-  //   name: 'galeria',
-  //   component: GaleriaView
-  // },
-  // {
-  //   path: '/galeria/:id',
-  //   name: 'detalle-imagen',
-  //   component: DetalleImagen
-  // },
+
   {
   path: '/galeria',
   name: 'galeria',

@@ -1,21 +1,21 @@
 <template>
   <div class="text-center">
-  <img src="../assets/error404.jpg" alt="" width="500">
-  <a class="btn" @click="$router.go(-1)">Regresar</a>
+     <img src="../assets/error404.jpg" alt="" width="500">
+     <a class="btn" @click="$router.go(-1)">Regresar</a>
   </div>
 </template>
 <script>
- export default {
-  name: "NotFound",
-  }
+  export default {
+   name: "NotFound",
+   }
 </script>
 <style scoped>
-img {
-    display: block;
-    margin: auto;
-    max-width: 400px;
-}
-.btn {
+  img {
+  display: block;
+  margin: auto;
+  max-width: 400px;
+  }
+  .btn {
   background-color: initial;
   background-image: linear-gradient(#8614f8 0, #760be0 100%);
   border-radius: 5px;
@@ -38,9 +38,8 @@ img {
   touch-action: manipulation;
   vertical-align: bottom;
   width: 190px;
-}
-.btn:hover {
+  }
+  .btn:hover {
   opacity: .7;
-}
-
+  }
 </style>

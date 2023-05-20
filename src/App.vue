@@ -1,40 +1,35 @@
 <template>
   <NavBar />
   <router-view />
-  <Footer />
+  <FooterBar />
 </template>
 <script>
   import NavBar from "@/components/NavBar.vue"
-  import Footer from "@/components/Footer.vue"
+  import FooterBar from "@/components/FooterBar.vue"
   export default {
   name: 'App',
   components: {
     NavBar,
-    Footer
+    FooterBar
     }
-}
+  }
 </script>
-
 <style>
-#app {
-   font-family: Avenir, Helvetica, Arial, sans-serif;
-
+  #app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-nav {
+  }
+  nav {
   padding: 30px; 
-}
-
-nav a {
+  }
+  nav a {
   font-weight: bold;
   color: #2c3e50;
-}
-
- nav a.router-link-exact-active {
-color: #46056c;
-}  
+  }
+  nav a.router-link-exact-active {
+  color: #46056c;
+  }  
 </style>
